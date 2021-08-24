@@ -376,6 +376,8 @@ def training_loop(
                 if rank == 0:
                     metric_main.report_metric(result_dict, run_dir=run_dir, snapshot_pkl=snapshot_pkl)
                 stats_metrics.update(result_dict.results)
+            if rank == 0:
+                print('Done evaluating metrics...')
         del snapshot_data # conserve memory
 
         # Collect statistics.
